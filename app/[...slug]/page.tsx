@@ -9,13 +9,15 @@ export default async function ContentPage({
 }) {
   const { slug: slugArray } = await params
   
-  // Don't handle Next.js internal paths (_next, api, etc.)
-  if (slugArray?.[0]?.startsWith('_') || slugArray?.[0] === 'api') {
+  // Don't handle empty slugs - let app/page.tsx handle root
+  if (!slugArray || slugArray.length === 0) {
     notFound()
   }
   
-  // Build slug from array - if empty, this will be handled by app/page.tsx
-  if (!slugArray || slugArray.length === 0) {
+  // Don't handle Next.js internal paths (_next, api, etc.) - return early
+  const firstSegment = slugArray[0]
+  if (firstSegment?.startsWith('_') || firstSegment === 'api' || firstSegment === 'favicon.ico') {
+    // Return a response that Next.js will handle as a static asset
     notFound()
   }
   
