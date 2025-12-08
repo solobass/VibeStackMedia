@@ -1,3 +1,13 @@
 # Prevent Vercel from deploying this branch
 # Keep the "Coming Soon" page live until ready to launch
+#
+# NOTE: .vercelignore doesn't prevent deployments.
+# To prevent auto-deployment:
+# 1. Go to Vercel Dashboard → Your Project → Settings → Git
+# 2. Disable "Auto-deploy" for the main branch
+# OR
+# 3. Go to Deployments → Click the three dots on latest deployment → "Ignore Build Step"
+#    Then add a condition that always returns false (e.g., "exit 1")
+#
+# The "Coming Soon" page is still live at www.vibestackmedia.com
 
